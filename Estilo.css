@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    color: #1d1d3b;
+    line-height: 1.6;
+  }
+  
+  header {
+    background-color: #f7f7f7;
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 2px solid #e0e0e0;
+    font-size: 1rem;
+  }
+  
+  header h1 {
+    font-size: 4em;
+    margin-bottom: 0.5rem;
+    color: #0055cc;
+  }
+  
+  header p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #1d1d3b;
+    font-weight: bold;
+  }
+  
+  nav a:hover {
+    color: #007bff;
+  }
+  
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem;
+    gap: 2rem;
+    justify-content: center;
+    max-width: 1200px; 
+    margin: 0 auto;    
+  }
+
+  prueba {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    color: #222;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+
+  article {
+    flex: 2;
+    min-width: 600px;
+  }
+  
+  section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fdfdfd;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  section h2 {
+    color: #1d1d3b;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.5rem;
+  }
+  
+  ol {
+    padding-left: 1.5rem;
+  }
+  
+  aside {
+    flex: 1;
+    max-width: 300px;
+    padding: 1.5rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    height: fit-content;
+  }
+  
+  aside h3 {
+    margin-top: 0;
+    color: #1d1d3b;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  input[type="email"] {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #1d1d3b;
+    color: white;
+    border: none;
+    padding: 0.6rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  button:hover {
+    background-color: #2f2f77;
+  }
+  
+  footer {
+    background-color: #f7f7f7;
+    text-align: center;
+    padding: 1rem;
+    border-top: 2px solid #e0e0e0;
+    font-size: 0.9rem;
+  }
