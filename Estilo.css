@@ -206,3 +206,48 @@ body {
     padding: 0.5rem;
   }
 }
+
+ /* Estilo de formulario */
+
+form label {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+form input {
+  padding: 0.5rem;
+  margin-bottom: 0.2rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.form-grid > div {
+  flex: 1;
+  min-width: 300px;
+}
+
+small.error {
+  color: red;
+  font-size: 0.8rem;
+  display: block;
+  height: 1em;
+}
+
+.form-submit {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .form-grid {
+    flex-direction: column;
+  }
+}

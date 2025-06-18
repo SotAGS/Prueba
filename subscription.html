@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formulario de Suscripción</title>
+  <link rel="stylesheet" href="Estilo.css" />
+  <script src="validacion.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>TyCSports</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article style="width: 100%;">
+      <h2 id="titulo-dinamico">Formulario de Suscripción</h2>
+
+      <form id="subscription-form" novalidate>
+        <label>Título del formulario:</label>
+        <input type="text" id="titulo-formulario" placeholder="Formulario de Suscripción" />
+        <small class="error"></small>
+
+        <div class="form-grid">
+          <!-- Columna izquierda -->
+          <div>
+            <label>Nombre completo:</label>
+            <input type="text" name="nombre" id="nombre">
+            <small class="error"></small>
+
+            <label>Email:</label>
+            <input type="email" name="email" id="email">
+            <small class="error"></small>
+
+            <label>Contraseña:</label>
+            <input type="password" name="password" id="password">
+            <small class="error"></small>
+
+            <label>Repetir contraseña:</label>
+            <input type="password" name="repassword" id="repassword">
+            <small class="error"></small>
+
+            <label>Edad:</label>
+            <input type="number" name="edad" id="edad">
+            <small class="error"></small>
+          </div>
+
+          <!-- Columna derecha -->
+          <div>
+            <label>Teléfono:</label>
+            <input type="text" name="telefono" id="telefono">
+            <small class="error"></small>
+
+            <label>Dirección:</label>
+            <input type="text" name="direccion" id="direccion">
+            <small class="error"></small>
+
+            <label>Ciudad:</label>
+            <input type="text" name="ciudad" id="ciudad">
+            <small class="error"></small>
+
+            <label>Código Postal:</label>
+            <input type="text" name="cp" id="cp">
+            <small class="error"></small>
+
+            <label>DNI:</label>
+            <input type="text" name="dni" id="dni">
+            <small class="error"></small>
+          </div>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit">Enviar</button>
+        </div>
+      </form>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 TyCSports.com. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
