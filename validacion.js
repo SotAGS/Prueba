@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("subscription-form");
+  const modal = document.getElementById("modal");
+  const modalTitulo = document.getElementById("modal-titulo");
+  const modalMsg = document.getElementById("modal-mensaje");
+  const cerrarBtn = document.getElementById("cerrar-modal");
 
   const campos = {
     nombre: {
@@ -44,6 +48,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  // Cargar desde LocalStorage
+  window.onload = function () {
+    const guardado = JSON.parse(localStorage.getItem("formulario"));
+    if (guardado) {
+      for (const id in guardado) {
+        const input = document.getElementById(id);
+        if (input) input.value = guardado[id];
+      }
+    }
+  };
+
+  // Validaciones blur/focus
   for (const id in campos) {
     const input = document.getElementById(id);
     const errorMsg = input.nextElementSibling;
@@ -59,38 +75,64 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Edición del título en vivo
+  document.getElementById("titulo-formulario").addEventListener("input", function () {
+    const nuevoTitulo = this.value.trim();
+    const tituloDOM = document.getElementById("titulo-dinamico");
+    tituloDOM.textContent = nuevoTitulo || "Formulario de Suscripción";
+  });
+
+  // Envío del formulario
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+
     let errores = [];
-    let datos = [];
+    let datos = {};
 
     for (const id in campos) {
       const input = document.getElementById(id);
       const errorMsg = input.nextElementSibling;
       if (!campos[id].val(input.value)) {
-        errores.push(`${id}: ${campos[id].msg}`);
         errorMsg.textContent = campos[id].msg;
+        errores.push(`${id}: ${campos[id].msg}`);
       } else {
-        datos.push(`${id}: ${input.value}`);
+        datos[id] = input.value;
       }
     }
 
     if (errores.length > 0) {
-      alert("Errores:\n" + errores.join("\n"));
-    } else {
-      alert("Datos enviados:\n" + datos.join("\n"));
-      form.reset();
+      mostrarModal("Errores de validación", errores.join("\n"));
+      return;
     }
+
+    // Envío POST
+    fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(datos)
+    })
+    .then(res => {
+      if (!res.ok) throw new Error("Error en la solicitud");
+      return res.json();
+    })
+    .then(data => {
+      localStorage.setItem("formulario", JSON.stringify(datos));
+      mostrarModal("¡Suscripción exitosa!", JSON.stringify(data, null, 2));
+      form.reset();
+    })
+    .catch(() => {
+      mostrarModal("Error", "Hubo un error al enviar los datos.");
+    });
   });
 
-  // Edición en tiempo real del título
-  document.getElementById("titulo-formulario").addEventListener("input", function () {
-    const nuevoTitulo = this.value.trim();
-    const tituloDOM = document.getElementById("titulo-dinamico");
-    if (nuevoTitulo.length > 0) {
-      tituloDOM.textContent = nuevoTitulo;
-    } else {
-      tituloDOM.textContent = "Formulario de Suscripción";
-    }
+  // Modal
+  cerrarBtn.addEventListener("click", () => {
+    modal.classList.add("oculto");
   });
+
+  function mostrarModal(titulo, mensaje) {
+    modalTitulo.textContent = titulo;
+    modalMsg.textContent = mensaje;
+    modal.classList.remove("oculto");
+  }
 });
